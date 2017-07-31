@@ -12,8 +12,8 @@ RUN opt/v/bin/pip install -U -r /opt/requirements-cpython.txt && \
     rm /opt/requirements-cpython.txt
 
 # change this add based on project #
-ADD artifact_cleanup.py /opt/artifact_cleanup.py
+ADD scripts /opt/scripts
 EXPOSE 8000
 WORKDIR /opt
 
-CMD ["/opt/v/bin/python", "artifact_cleanup.py"]
+CMD ["/opt/v/bin/python", "/opt/scripts/artifact_cleanup.py"]
