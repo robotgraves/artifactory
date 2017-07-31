@@ -4,7 +4,8 @@ MAINTAINER apaul@transparent.com
 RUN apt-get update
 
 RUN apt-get install -y bzip2 \
-    zlib1g-dev libopenjpeg-dev libjpeg-dev libcurl4-openssl-dev
+    zlib1g-dev libopenjpeg-dev libjpeg-dev \
+    libcurl4-openssl-dev libssl-dev
 
 ADD requirements-cpython.txt /opt/requirements-cpython.txt
 
