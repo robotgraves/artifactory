@@ -1,4 +1,4 @@
-FROM 711226717742.dkr.ecr.us-east-1.amazonaws.com/qat-base-image:latest
+FROM robotgraves/virtualpython
 MAINTAINER apaul@transparent.com
 
 RUN apt-get update
