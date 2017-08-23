@@ -17,7 +17,7 @@ artapi = arturl + '/api'
 
 
 def delete_artifact(artpath):
-    artifact_url = "%s/%s%s" % (arturl, artgroup, artpath)
+    artifact_url = "%s/%s/%s%s" % (arturl, artbase, artgroup, artpath)
     print "In queue to be deleted: " + artifact_url
     c = pycurl.Curl()
     c.setopt(pycurl.USERNAME, artuser)
