@@ -38,12 +38,16 @@ def list_of_artifacts_to_delete():
     c.close()
     data = json.loads(response.getvalue())
     artifacts_list = list()
-    for artifact in data['children']:
-        artifacts_list.append(str(artifact['uri']))
-    total_artifacts = len(artifacts_list)
-    artifacts_list = natsorted(artifacts_list) # Perform a natural sort
-    if total_artifacts > artcount:
-        target = (total_artifacts - artcount) - 1  # Get the list index
-        delete_artifact(artifacts_list[target])
+    try:
+        for artifact in data['children']:
+            artifacts_list.append(str(artifact['uri']))
+        total_artifacts = len(artifacts_list)
+        artifacts_list = natsorted(artifacts_list) # Perform a natural sort
+        if total_artifacts > artcount:
+            target = (total_artifacts - artcount) - 1  # Get the list index
+            delete_artifact(artifacts_list[target])
+    except KeyError:
+        print "No folder to clean, given folder is empty"
+        print "group = " + str(artgroup)
 
 list_of_artifacts_to_delete()
