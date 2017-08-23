@@ -42,9 +42,11 @@ def list_of_artifacts_to_delete():
         for artifact in data['children']:
             artifacts_list.append(str(artifact['uri']))
         artifacts_list = natsorted(artifacts_list)  # Perform a natural sort
-        while len(artifacts_list) > artcount:
-            target = (len(artifacts_list) - artcount) - 1  # Get the list index
+        length = len(artifacts_list)
+        while length > artcount:
+            target = (length - artcount) - 1  # Get the list index
             delete_artifact(artifacts_list[target])
+            length -= 1
     except KeyError:
         print "No folder to clean, given folder is empty"
         print "group = " + str(artgroup)
